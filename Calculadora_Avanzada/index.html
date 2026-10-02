@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora Avanzada</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="app">
+
+        <!-- Barra superior -->
+        <header class="topbar">
+            <div>
+                <h1>Calculadora</h1>
+                <span class="subtitle">Calculadora científica avanzada</span>
+            </div>
+
+            <div class="top-actions">
+                <button
+                    id="themeToggle"
+                    class="icon-btn"
+                    type="button"
+                    aria-label="Cambiar tema"
+                    title="Cambiar tema"
+                >
+                    ☾
+                </button>
+
+                <button
+                    id="historyToggle"
+                    class="icon-btn"
+                    type="button"
+                    aria-label="Mostrar historial"
+                    title="Historial"
+                >
+                    ◷
+                </button>
+            </div>
+        </header>
+
+        <section class="calculator-layout">
+
+            <!-- Calculadora -->
+            <section class="calculator">
+
+                <!-- Pantalla -->
+                <div class="display" aria-live="polite">
+
+                    <div class="memory-indicator" id="memoryIndicator">
+                        M
+                    </div>
+
+                    <div
+                        id="expression"
+                        class="expression"
+                        aria-label="Operación actual"
+                    >
+                        0
+                    </div>
+
+                    <div
+                        id="result"
+                        class="result"
+                        aria-label="Resultado"
+                    >
+                        0
+                    </div>
+
+                    <div class="display-status">
+                        <span id="angleMode">DEG</span>
+                        <span id="displayMessage"></span>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <div class="toolbar">
+
+                    <button
+                        id="scientificToggle"
+                        class="tool-btn active"
+                        type="button"
+                    >
+                        SCI
+                    </button>
+
+                    <button
+                        id="angleToggle"
+                        class="tool-btn"
+                        type="button"
+                    >
+                        DEG
+                    </button>
+
+                    <button
+                        id="clearEntry"
+                        class="tool-btn"
+                        type="button"
+                    >
+                        CE
+                    </button>
+
+                    <button
+                        id="backspace"
+                        class="tool-btn"
+                        type="button"
+                        aria-label="Borrar carácter"
+                    >
+                        ⌫
+                    </button>
+
+                    <button
+                        id="clearAll"
+                        class="tool-btn danger"
+                        type="button"
+                    >
+                        C
+                    </button>
+                </div>
+
+                <!-- Panel científico -->
+                <section
+                    id="scientificPanel"
+                    class="scientific-panel"
+                    aria-label="Funciones científicas"
+                >
+
+                    <button class="scientific-btn" data-value="sin(">sin</button>
+                    <button class="scientific-btn" data-value="cos(">cos</button>
+                    <button class="scientific-btn" data-value="tan(">tan</button>
+
+                    <button class="scientific-btn" data-value="asin(">sin⁻¹</button>
+                    <button class="scientific-btn" data-value="acos(">cos⁻¹</button>
+                    <button class="scientific-btn" data-value="atan(">tan⁻¹</button>
+
+                    <button class="scientific-btn" data-value="log(">log</button>
+                    <button class="scientific-btn" data-value="ln(">ln</button>
+                    <button class="scientific-btn" data-value="sqrt(">√</button>
+
+                    <button class="scientific-btn" data-value="^2">x²</button>
+                    <button class="scientific-btn" data-value="^">xʸ</button>
+                    <button class="scientific-btn" data-value="!">x!</button>
+
+                    <button class="scientific-btn" data-value="π">π</button>
+                    <button class="scientific-btn" data-value="e">e</button>
+                    <button class="scientific-btn" data-value="%">%</button>
+
+                    <button class="scientific-btn" data-value="mod">mod</button>
+                    <button class="scientific-btn" data-value="(">(</button>
+                    <button class="scientific-btn" data-value=")">)</button>
+
+                    <button class="scientific-btn" data-value="abs(">abs</button>
+                    <button class="scientific-btn" data-value="exp(">exp</button>
+                    <button class="scientific-btn" data-value="10^">10ˣ</button>
+                </section>
+
+                <!-- Memoria -->
+                <section class="memory-panel">
+
+                    <button class="memory-btn" data-memory="MC">MC</button>
+                    <button class="memory-btn" data-memory="MR">MR</button>
+                    <button class="memory-btn" data-memory="M+">M+</button>
+                    <button class="memory-btn" data-memory="M-">M-</button>
+                    <button class="memory-btn" data-memory="MS">MS</button>
+
+                </section>
+
+                <!-- Teclado principal -->
+                <section class="keypad">
+
+                    <button class="key function" data-value="(">(</button>
+                    <button class="key function" data-value=")">)</button>
+                    <button class="key function" data-value="%">%</button>
+                    <button class="key operator" data-value="÷">÷</button>
+
+                    <button class="key" data-value="7">7</button>
+                    <button class="key" data-value="8">8</button>
+                    <button class="key" data-value="9">9</button>
+                    <button class="key operator" data-value="×">×</button>
+
+                    <button class="key" data-value="4">4</button>
+                    <button class="key" data-value="5">5</button>
+                    <button class="key" data-value="6">6</button>
+                    <button class="key operator" data-value="-">−</button>
+
+                    <button class="key" data-value="1">1</button>
+                    <button class="key" data-value="2">2</button>
+                    <button class="key" data-value="3">3</button>
+                    <button class="key operator" data-value="+">+</button>
+
+                    <button class="key function" data-value="±">±</button>
+                    <button class="key" data-value="0">0</button>
+                    <button class="key" data-value=".">.</button>
+                    <button class="key equals" id="equals">=</button>
+
+                </section>
+            </section>
+
+            <!-- Historial -->
+            <aside id="historyPanel" class="history-panel">
+
+                <div class="history-header">
+                    <div>
+                        <h2>Historial</h2>
+                        <span id="historyCount">0 operaciones</span>
+                    </div>
+
+                    <button
+                        id="clearHistory"
+                        class="clear-history"
+                        type="button"
+                    >
+                        Limpiar
+                    </button>
+                </div>
+
+                <div id="historyList" class="history-list">
+                    <div class="empty-history">
+                        <span>◷</span>
+                        <p>No hay operaciones todavía</p>
+                    </div>
+                </div>
+            </aside>
+
+        </section>
+
+        <footer>
+            <span>Calculadora avanzada</span>
+            <span>Teclado compatible</span>
+            <span>HTML · CSS · JavaScript</span>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
